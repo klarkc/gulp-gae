@@ -13,7 +13,7 @@ var gulp = require('gulp'),
 // var gae_dir = '/home/user/google-appengine';
 
 // Optional options variable to be used into spawn function
-// var options = {cwd: '/home/user/project', env: 'NODE_ENV=test'}
+// var options = {cwd: '/home/user/project', env: {NODE_ENV: 'production'}}
 
 gulp.task('gae-serve', function () {
   gulp.src('app/app.yaml')
