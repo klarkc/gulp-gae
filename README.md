@@ -9,8 +9,12 @@ gulp-gae
 var gulp = require('gulp'),
   gae = require('gulp-gae');
 
-// Optionally you can omit gae_dir parameter to use built-in appengine library
-var gae_dir = '/home/user/google-appengine';
+// Optional google app engine directory, if omitted the built-in app engine library will be used
+// var gae_dir = '/home/user/google-appengine';
+
+// Optional options variable to be used into spawn function
+// var options = {cwd: '/home/user/project', env: 'NODE_ENV=test'}
+
 gulp.task('gae-serve', function () {
   gulp.src('app/app.yaml')
     .pipe(gae('dev_appserver.py', [], {
@@ -18,7 +22,7 @@ gulp.task('gae-serve', function () {
       host: '0.0.0.0',
       admin_port: 8001,
       admin_host: '0.0.0.0'
-    }, gae_dir));
+    }/*, gae_dir, options */));
 });
 
 
@@ -27,7 +31,7 @@ gulp.task('gae-deploy', function () {
     .pipe(gae('appcfg.py', ['update'], {
       version: 'dev',
       oauth2: undefined // for value-less parameters
-    }));
+    }/*, gae_dir, options */));
 });
 
 
